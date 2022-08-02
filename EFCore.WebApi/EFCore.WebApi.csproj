@@ -7,6 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20220801025734_initial.Designer.cs" />
+    <Compile Remove="Migrations\20220801030059_secundary.Designer.cs" />
+    <Compile Remove="Migrations\20220802100106_secundary.Designer.cs" />
+    <Compile Remove="Migrations\20220802100332_Pessoa.Designer.cs" />
+    <Compile Remove="Migrations\20220802100505_Terc.Designer.cs" />
+    <Compile Remove="Migrations\HeroiContextModelSnapshot.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Analyzers" Version="6.0.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.7" />

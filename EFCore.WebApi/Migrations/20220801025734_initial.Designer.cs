@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EFCore.WebApi.Migrations
 {
     [DbContext(typeof(HeroiContext))]
-    [Migration("20220731213002_secundary")]
-    partial class secundary
+    [Migration("20220801025734_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
