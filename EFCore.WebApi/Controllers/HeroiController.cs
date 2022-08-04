@@ -29,7 +29,7 @@ namespace EFCore.WebApi.Controllers
         [HttpGet("api")]
         public async Task<ActionResult> Listar()
         {
-            var data = await dc.Armas.ToListAsync();
+            var data = await dc.Herois.ToListAsync();
             return Ok(data);
         }
 
