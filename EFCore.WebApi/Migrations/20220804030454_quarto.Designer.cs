@@ -4,6 +4,7 @@ using EFCore.WebApi.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EFCore.WebApi.Migrations
 {
     [DbContext(typeof(HeroiContext))]
-    partial class HeroiContextModelSnapshot : ModelSnapshot
+    [Migration("20220804030454_quarto")]
+    partial class quarto
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -106,7 +108,7 @@ namespace EFCore.WebApi.Migrations
             modelBuilder.Entity("EFCore.WebApi.Models.Arma", b =>
                 {
                     b.HasOne("EFCore.WebApi.Models.Heroi", "Heroi")
-                        .WithMany()
+                        .WithMany("Armas")
                         .HasForeignKey("HeroiId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -123,7 +125,7 @@ namespace EFCore.WebApi.Migrations
                         .IsRequired();
 
                     b.HasOne("EFCore.WebApi.Models.Heroi", "Heroi")
-                        .WithMany()
+                        .WithMany("HeroisBatalhas")
                         .HasForeignKey("HeroiId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -131,6 +133,13 @@ namespace EFCore.WebApi.Migrations
                     b.Navigation("Batalha");
 
                     b.Navigation("Heroi");
+                });
+
+            modelBuilder.Entity("EFCore.WebApi.Models.Heroi", b =>
+                {
+                    b.Navigation("Armas");
+
+                    b.Navigation("HeroisBatalhas");
                 });
 #pragma warning restore 612, 618
         }

@@ -17,15 +17,6 @@ namespace EFCore.WebApi.Controllers
             this.dc = context;
         }
 
-        [HttpPost("api")]
-        public async Task<ActionResult> Cadastrar([FromBody] Heroi h)
-        {
-            dc.Herois.Add(h);
-            await dc.SaveChangesAsync();
-
-            return Created("Objeto herois", h);
-        }
-
         [HttpGet("api")]
         public async Task<ActionResult> Listar()
         {
@@ -33,15 +24,13 @@ namespace EFCore.WebApi.Controllers
             return Ok(data);
         }
 
-        private ActionResult Created()
+        [HttpPost]
+        public async Task<ActionResult> Gravar([FromBody] Heroi h)
         {
-            throw new NotImplementedException();
-        }
+            dc.Herois.Add(h);
+            await dc.SaveChangesAsync();
 
-        [HttpGet("Hello")]
-        public string Hello()
-        {
-            return "Hello";
+            return Created("Objeto de Heroi", h);
         }
     }
 }
