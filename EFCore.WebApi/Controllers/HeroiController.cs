@@ -41,11 +41,26 @@ namespace EFCore.WebApi.Controllers
         }
 
         [HttpPut("api")]
-        public async Task<ActionResult> editar([FromBody]Heroi h) 
+        public async Task<ActionResult> Editar([FromBody]Heroi h) 
         {
             dc.Herois.Update(h);
             await dc.SaveChangesAsync();
             return Ok(h);
+        }
+
+        [HttpDelete("api/{id}")]
+        public async Task<ActionResult> Deletar(int id)
+        {
+            Heroi h = Filtrar(id);
+            if (h == null)
+            {
+                return NotFound(h);
+            } else
+            {
+                dc.Herois.Remove(h);
+                await dc.SaveChangesAsync();
+                return Ok();
+            }
         }
     }
 }
