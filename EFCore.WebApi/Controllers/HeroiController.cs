@@ -24,13 +24,28 @@ namespace EFCore.WebApi.Controllers
             return Ok(data);
         }
 
-        [HttpPost]
+        [HttpPost("api")]
         public async Task<ActionResult> Gravar([FromBody] Heroi h)
         {
             dc.Herois.Add(h);
             await dc.SaveChangesAsync();
 
             return Created("Objeto de Heroi", h);
+        }
+
+        [HttpGet("api/{id}")]
+        public Heroi Filtrar(int id)
+        {
+            Heroi h = dc.Herois.Find(id);
+            return h;
+        }
+
+        [HttpPut("api")]
+        public async Task<ActionResult> editar([FromBody]Heroi h) 
+        {
+            dc.Herois.Update(h);
+            await dc.SaveChangesAsync();
+            return Ok(h);
         }
     }
 }
